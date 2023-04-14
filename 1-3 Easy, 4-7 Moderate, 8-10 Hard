@@ -1,0 +1,201 @@
+#1. Roman to Integer
+class Solution(object):
+   def romanToInt(self, s):
+      """
+      :type s: str
+      :rtype: int
+      """
+      roman = {'I':1,'V':5,'X':10,'L':50,'C':100,'D':500,'M':1000,'IV':4,'IX':9,'XL':40,'XC':90,'CD':400,'CM':900}
+      i = 0
+      num = 0
+      while i < len(s):
+         if i+1<len(s) and s[i:i+2] in roman:
+            num+=roman[s[i:i+2]]
+            i+=2
+         else:
+            #print(i)
+            num+=roman[s[i]]
+            i+=1
+      return num
+ob1 = Solution()
+print(ob1.romanToInt("III"))
+print(ob1.romanToInt("CDXLIII"))
+_________________________________________________________________________________________________________________________________________________________________
+
+#2. Add numbers
+# Store input numbers
+num1 = input('Enter first number: ')
+num2 = input('Enter second number: ')
+
+# Add two numbers
+sum = float(num1) + float(num2)
+
+# Display the sum
+print('The sum of {0} and {1} is {2}'.format(num1, num2, sum))
+_________________________________________________________________________________________________________________________________________________________________
+
+#3. Palindrome
+string=input(("Enter a string:"))
+if(string==string[::-1]):
+      print("The string is a palindrome")
+else:
+      print("Not a palindrome")
+_________________________________________________________________________________________________________________________________________________________________  
+
+#4. Power ( x , n )
+# Python3 program for the above approach
+def power(x, n):
+ 
+    # initialize result by 1
+    pow = 1
+ 
+    # Multiply x for n times
+    for i in range(n):
+        pow = pow * x
+ 
+    return pow
+ 
+ 
+# Driver code
+if __name__ == '__main__':
+ 
+    x = 2
+    n = 3
+ 
+       # Function call
+    print(power(x, n))
+_________________________________________________________________________________________________________________________________________________________________
+
+#5. Pyramid Pattern
+#python3 code to print pyramid pattern using recursion
+def pypart(n):
+    if n==0:
+        return
+    else:
+        pypart(n-1)
+        print("* "*n)
+   
+# Driver Code
+n = 5
+pypart(n)
+#this code is contributed by Shivesh Kumar Dwivedi
+_________________________________________________________________________________________________________________________________________________________________
+
+#6. Kth Largest element in an array
+def KthLargestElement(arr, n, k):
+    arr.sort()       # sorting the array
+    return arr[n-k]  #return kth largest element
+
+arr = [2,1,4,6,3,9,7]
+n = len(arr)
+k = 2
+x = KthLargestElement(arr, n, k)
+print("Kth largest element is ",x)
+_________________________________________________________________________________________________________________________________________________________________
+
+#7. Lettes to Phone number
+L = {'2':"abc",'3':"def",'4':"ghi",'5':"jkl",
+     '6':"mno",'7':"pqrs",'8':"tuv",'9':"wxyz"}
+
+class Solution:
+    def letterCombinations(self, D: str) -> List[str]:
+        lenD, ans = len(D), []
+        if D == "": return []
+        def bfs(pos: int, st: str):
+            if pos == lenD: ans.append(st)
+            else:
+                letters = L[D[pos]]
+                for letter in letters:
+                    bfs(pos+1,st+letter)
+        bfs(0,"")
+        return ans
+
+_________________________________________________________________________________________________________________________________________________________________
+
+#8. Median of two sorted Arrays
+def getMedian(A, B, n, m) :
+ 
+    i = 0 
+    j = 0 
+    m1, m2 = -1, -1
+ 
+    if((m + n) % 2 == 1) :   
+        for count in range(((n + m) // 2) + 1) :       
+            if(i != n and j != m) :           
+                if A[i] > B[j] :
+                    m1 = B[j]
+                    j += 1
+                else :
+                    m1 = A[i]
+                    i += 1           
+            elif(i < n) :           
+                m1 = A[i]
+                i += 1
+          
+            # for case when j<m,
+            else :           
+                m1 = B[j]
+                j += 1       
+        return m1
+     
+    else :
+        for count in range(((n + m) // 2) + 1) :        
+            m2 = m1
+            if(i != n and j != m) :       
+                if A[i] > B[j] :
+                    m1 = B[j]
+                    j += 1
+                else :
+                    m1 = A[i]
+                    i += 1           
+            elif(i < n) :           
+                m1 = A[i]
+                i += 1
+             
+            # for case when j<m,
+            else :           
+                m1 = B[j]
+                j += 1       
+        return (m1 + m2)//2
+
+_________________________________________________________________________________________________________________________________________________________________
+
+#9.Function to reverse words of string
+ 
+def rev_sentence(sentence):
+ 
+    # first split the string into words
+    words = sentence.split(' ')
+ 
+    # then reverse the split string list and join using space
+    reverse_sentence = ' '.join(reversed(words))
+ 
+    # finally return the joined string
+    return reverse_sentence
+ 
+if __name__ == "__main__":
+    input = 'geeks quiz practice code'
+    print (rev_sentence(input))
+
+_________________________________________________________________________________________________________________________________________________________________
+
+#10.sum of numbers with units digit k
+# Returns count of numbers with k as last
+# digit.
+def countLastDigitK(low, high, k):
+    count = 0
+    for i in range(low, high+1):
+        if (i % 10 == k):
+            count+=1 
+    return count
+  
+  
+# Driver Program
+low = 3
+high = 35
+k = 3
+print(countLastDigitK(low, high, k))
+
+_________________________________________________________________________________________________________________________________________________________________
+
+      
